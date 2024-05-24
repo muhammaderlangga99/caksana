@@ -12,7 +12,9 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+                cherry: ['Cherry Bomb One', 'cursive'],
+                // poppins: ['Poppins', 'sans-serif'],
             },
         },
     },

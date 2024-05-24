@@ -13,9 +13,9 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index','show']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
-    
+
     /**
      * Display a listing of the resource with support for filters.
      * 
@@ -28,15 +28,15 @@ class PostController extends Controller
     {
         if ($request->has('filterByTag')) {
             return view('post.index', [
-                'title' => 'Posts with '. __('blog.tag') .' ' . $request->get('filterByTag'),
-                'filter' => 'Filtered by '. __('blog.tag') .' "' . $request->get('filterByTag') . '"',
+                'title' => 'Posts with ' . __('blog.tag') . ' ' . $request->get('filterByTag'),
+                'filter' => 'Filtered by ' . __('blog.tag') . ' "' . $request->get('filterByTag') . '"',
                 'posts' => Post::whereJsonContains('tags', $request->get('filterByTag'))->get(),
             ]);
         }
 
         if ($request->has('author')) {
             $author = User::findOrFail($request->get('author'));
-    
+
             return view('post.index', [
                 'title' => 'Posts by ' . $author->name,
                 'filter' => 'Filtered by author ' . $author->name,
@@ -57,13 +57,13 @@ class PostController extends Controller
      */
     public function create(Request $request)
     {
-        $this->authorize('create', App\Models\Post::class);
+        $this->authorize('create', Post::class);
 
         if (config('blog.easyMDE.enabled')) {
             if (!$request->has('draft_id')) {
                 return redirect(route('posts.create', ['draft_id' => time()]));
             };
-    
+
             return view('post.create', [
                 'draft_id' => $request->get('draft_id'),
             ]);
@@ -81,7 +81,7 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         // The incoming request is valid and authorized...
-    
+
         // Retrieve the validated input data...
         $validated = $request->validated();
 
@@ -123,7 +123,7 @@ class PostController extends Controller
     public function edit(Request $request, Post $post)
     {
         $this->authorize('update', $post);
-        
+
         if (config('blog.easyMDE.enabled')) {
             if (!$request->has('draft_id')) {
                 return redirect(route('posts.edit', [
@@ -131,7 +131,7 @@ class PostController extends Controller
                     'draft_id' => time(),
                 ]));
             };
-    
+
             return view('post.edit', [
                 'post' => $post,
                 'draft_id' => $request->get('draft_id'),
@@ -151,7 +151,7 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         // The incoming request is valid and authorized...
-    
+
         // Retrieve the validated input data...
         $validated = $request->validated();
 
@@ -180,7 +180,7 @@ class PostController extends Controller
         $post->save();
         return back()->with('success', 'Successfully Published Post!');
     }
-    
+
     /**
      * Update the published_at date in the specified resource in storage.
      *
