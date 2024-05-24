@@ -425,8 +425,8 @@
     </div>
     <img src="{{ asset('/svg/wave.svg') }}" alt="" class="rotate-180 -translate-y-2">
     </div>
-    <div class="dark:bg-gray-900 overflow-x-hidden">
-        <div class="border-b-4 border-dotted border-yellow-400 translate-x-20 relative">
+    <div class="dark:bg-gray-900">
+        <div class="border-b-4 border-dotted border-yellow-400 translate-x-20 relative overflow-x-hidden">
             <i
                 class="bi bi-airplane-engines-fill absolute left-0 -rotate-90 inline-block text-xl -translate-y-3 text-yellow-400 "></i>
 
