@@ -126,14 +126,21 @@
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
             @elseif(Route::has('register'))
-                <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                    {{ __('Log in') }}
+                <x-responsive-nav-link href="/">
+                    {{ __('home') }}
                     </x-nav-link>
 
-                    <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
-                        {{ __('Register') }}
+                    <x-responsive-nav-link href="#about">
+                        {{ __('about') }}
                         </x-nav-link>
-                    @endauth
+
+                        <x-responsive-nav-link href="#fasilitas">
+                            {{ __('fasilitas') }}
+                            </x-nav-link>
+                            <x-responsive-nav-link href="#blog">
+                                {{ __('blogs') }}
+                                </x-nav-link>
+                            @endauth
         </div>
 
         <!-- Responsive Settings Options -->

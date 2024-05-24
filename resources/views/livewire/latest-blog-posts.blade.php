@@ -16,7 +16,7 @@
                 <div class="swiper-slide"><x-post-card :post="$post" /></div>
             @endforeach
             {{-- see other blog --}}
-            <div class="swiper-slide">
+            {{-- <div class="swiper-slide">
                 <div class="flex flex-col items-center justify-center h-[50vh] bg-gray-100 rounded-lg">
                     <div class="text-3xl font-bold text-gray-800">See Other Blogs</div>
                     <div class="text-gray-600">Click the button below to see other blogs</div>
@@ -25,7 +25,7 @@
                             Blogs</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="swiper-pagination"></div>
     </div>
